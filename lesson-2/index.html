@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+var a = 1, b = 1, c, d;
+c = ++a; alert(c);          // 2, префиксная форма инкремента a: сначала инкремент a=a+1, затем вычисление. вывод с=a=2
+d = b++; alert(d);          // 1, постфиксная форма инкремента b: сначала вычесление d=b=1, затем инеремент b, вывод d = 1 (при этом b =2)
+c = (2+ ++a); alert(c);     // 5, с= 2 + (a=2+1) = 5, выводим с = 5, (при этом a = 3)
+d = (2+ b++); alert(d);     // 4, d= (2 + b=2) = 4, выводим d = 4, при этом b = 3 (постфиксный инкремент)
+alert(a);                   // 3 выводим ранее вычесленное a=3
+alert(b);                   // 3 выводим  ранее вычесленное b=3
+*/
+
+/*2. Чему будет равен x в примере ниже? */
+
+/* 
+var a = 2;
+var x = 1 + (a *= 2); 
+alert(x); // 5, так как x = 1 + ( a = a * 2  = 4) = 5
+
+/*3. Объявить две целочисленные переменные a и b и задать им произвольные начальные значения.
+Затем написать скрипт, который работает по следующему принципу:
+если a и b положительные, вывести их разность;
+если а и b отрицательные, вывести их произведение;
+если а и b разных знаков, вывести их сумму; ноль можно считать положительным числом. */
+
+/*5 Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.*/
+
+var a, b
+
+function getRandom10() {
+    return (parseInt(Math.random()*20 - 10));
+}
+
+function addition(a, b) {
+    return (a + b);
+}
+
+function subtraction(a, b) {
+    return (a - b);
+}
+
+function multiplication(a, b) {
+    return (a * b);
+}
+
+function multiplication(a, b) {
+    return (a * b);
+}
+
+function division(a, b) {
+    return (a / b);
+}
+
+a = getRandom10();
+b = getRandom10();
+
+if (a >= 0 && b >= 0) {
+    alert( "a = " + a + "\nb = " + b + "\na - b = " + subtraction(a, b));
+} else if (a < 0 && b < 0) {
+    alert( "a = " + a + "\nb = " + b + "\na * b = " + multiplication(a,b));
+} else {
+    alert( "a = " + a + "\nb = " + b + "\na + b = " + addition(a,b));
+}
+
+/*4. Присвоить переменной а значение в промежутке [0..15].
+С помощью оператора switch организовать вывод чисел от a до 15.*/
+
+var a = parseInt(Math.random() * 16 + 0); //так как 15 включительно
+var print = "Числа :";
+
+switch (a) {
+    case 0: print =  print + " 0";
+    case 1: print =  print + " 1";
+    case 2: print =  print + " 2";
+    case 3: print =  print + " 3"; 
+    case 4: print =  print + " 4";
+    case 5: print =  print + " 5";
+    case 6: print =  print + " 6";
+    case 7: print =  print + " 7";
+    case 8: print =  print + " 8";
+    case 9: print =  print + " 9";
+    case 10: print =  print + " 10";
+    case 11: print =  print + " 11";
+    case 12: print =  print + " 12";
+    case 13: print =  print + " 13";
+    case 14: print =  print + " 14";
+    case 15: print =  print + " 15";
+};
+alert("a = " + a +"\n" + print);
+/*Второй способ рекурсия*/
+var a = parseInt(Math.random() * 16 + 0); //так как 15 включительно
+var print = "";
+var n = 15;
+function printnumber (c, k) {
+    
+    if (k-c!= 0) {
+        
+        return (" " + c + (printnumber (c+1, k)));
+    } else 
+    return (" " + c);
+}
+alert("a = " + a +"\nЧисла: " + printnumber(a, 15));
+
+
+/*6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+где arg1, arg2 – значения аргументов, operation – строка с названием операции.
+В зависимости от переданного значения операции выполнить одну из арифметических операций (использовать функции из пункта 3)
+и вернуть полученное значение (использовать switch).*/
+
+function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+        case "+":
+            alert(addition(arg1, arg2));
+            break;
+        case "-":
+            alert(subtraction(arg1, arg2));
+            break;
+        case "*":
+            alert(multiplication(arg1, arg2));
+            break;
+        case "/":
+            alert(division(arg1, arg2));
+            break;
+        default: alert("Нет такого оператора");        
+    }
+}
+var x = +prompt("Введите первое число");
+var y = +prompt("Введите второе число");
+var operator = prompt("Введите оператор");
+mathOperation(x, y, operator);
+
+/*7. *Сравнить null и 0. Попробуйте объяснить результат.*/
+console.log(null == 0); //false  JS использует абстрактный алгоритм сравнения для равенств. В этом алгоритме для null == 0 значение соответствует false, так как выполняется умолчание, если ни один из пунктов выше не применим.
+console.log(null > 0); //false   JS использует абстрактный алгоритм отношений преобразуя части к типу number и получая null = +0, 0 = 0, возвращая false, если значения равны,а 0=+0
+console.log(null < 0); //false  То же самое
+console.log(null >= 0); //true Здесь JS согласно спецификации если null < 0 принимает значение false, то null >= 0 принимает значение true.
+console.log(null <= 0); //true Тоже самое
+
+/*8. *С помощью рекурсии организовать функцию возведения числа в степень.
+Формат: function power(val, pow), где val – заданное число, pow – степень.*/
+
+function power(val, pow) {
+    if (pow != 1) {
+        return (val*power (val, pow - 1));
+    } else {
+        return val;
+    }
+}
+
+alert(power(4, 3));
+
+</script>
+</body>
+</html>
