@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime number</title>
+</head>
+<body>
+   <script>
+//1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+// Вариант с счетчиком типа boolean       
+       var n = 2, k, check; // так как простое число больше 1, начинаем цикл от 2
+       while (n <= 100){
+           k = 2; check = false;
+           while (k <= n / 2 ){
+                check = check || ((n % k)== 0);// если хотя бы одно число до n/2 делится без остатка, проверка даст истину.
+                k++;   
+           }
+           if (!check){
+               console.log(n);
+           };
+           n++;
+       }
+
+       
+    </script>
+    
+</body>
+</html>
+
+
+
