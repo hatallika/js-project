@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 4 Function numberToObject</title>
+</head>
+<body>
+   <script>
+//1. Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, мы должны получить на выходе объект, в котором в соответствующих свойствах описаны единицы, десятки и сотни. Например, для числа 245 мы должны получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
+       
+//Вариант1 математический расчет числа          
+    var object = {};
+    var num = +prompt("Введите число от 0 до 999");       
+       
+    function numberToObject(n) {
+        if(n > 999) {
+            console.log("Введеное число больше 999");
+            return object = {};
+        }
+        
+        if(isNaN(n)) {
+            console.log("Не является числом");
+            return object = {};
+        }
+                
+        object.one = n % 10;
+        object.ten = parseInt((n%100)/10);
+        object.hundred = parseInt(n/100);
+        
+        return object;
+    } 
+      
+       console.log(numberToObject(num));   
+    
+    
+    </script>
+    
+</body>
+</html>
