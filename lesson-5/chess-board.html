@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess board</title>
+</head>
+<body>
+    <div id = "chess"></div>
+    <script>
+        var masLetters = ["A","B","C","D","E","F","G","H"];
+        var masFiguresWhite = ["&#9814;", "&#x2658", "&#x2657", "&#x2655","&#x2654", "&#x2657", "&#x2658", "&#9814;"];// белые фигуры
+        var masFiguresBlack = ["&#x265C;", "&#x265E", "&#x265D", "&#x265B","&#x265A", "&#x265D", "&#x265E;", "&#x265C;"];
+        
+        var pawnWhite = "&#x2659";// - пешка белая
+        var pawnBlack = "&#x265F";
+        var tr, td , i, j;
+        function boardColor(n,m) { // закрашиваем через одну проверяя четность суммы строки и столбца
+
+            if((n+m)%2 == 0) {
+                td.style.background = "#FFF";
+            } else {
+                td.style.background = "#D3D3D3";
+            }
+        }
+     
+    var table = document.createElement("table"); 
+        for (i = 0; i < 10; i++){
+            tr = document.createElement("tr");
+            table.append(tr);
+            for (j = 0; j<10; j++){
+                td = document.createElement("td");
+                
+                td.width = "70";
+                td.height = "70";
+                td.style.fontSize = "50px";
+                td.align = "center";
+                if (i > 0 && i < 9 && j > 0 && j < 9) {
+                    boardColor(i,j);
+                    td.style.border = "1px solid #000";
+                }               
+                
+                tr.append(td);
+                
+                if(j > 0 && j < 9){                                        
+                       switch(i){ //заполняем строки с буквами и фигурами
+                        case 0: 
+                                td.innerText = masLetters[j-1];
+                                td.style.transform = "rotate(180deg)"; //перевернутые буквы
+                                td.style.fontSize = "20px";
+                            break;
+                        case 1: 
+                                td.innerHTML = masFiguresWhite[j-1]; // белые фигуры                             
+                               break;
+                        case 2: 
+                                td.innerHTML = pawnWhite;   //белые пешки                             
+                               break;
+                        case 7: 
+                                td.innerHTML = pawnBlack;   //черные пешки                             
+                               break;       
+                               
+                        case 8: 
+                               td.innerHTML = masFiguresBlack[j-1]; // черные фигуры
+                               break;
+                        case 9: //заполняем буквами последнюю строку                            
+                                td.innerText = masLetters[j-1]; // буквы
+                               td.style.fontSize = "20px";
+                            break;
+                        }                     
+                }    
+                
+            }
+            if (i > 0 && i < 9) { // пишем цифры на доске
+            var list = tr.querySelectorAll("td");  //получаем массив из td строки  
+            list[0].innerText = 9 - i; // первая ячейка заполняется цифрой
+            list[0].style.fontSize = "20px";    
+            list[9].innerText = 9 - i; // вторая ячейка заполняется цифрой
+            list[9].style.transform = "rotate(180deg)";
+            list[9].style.fontSize = "20px";    
+            }
+                
+        }
+         
+        document.getElementById("chess").append(table);
+    </script>
+</body>
+</html>
