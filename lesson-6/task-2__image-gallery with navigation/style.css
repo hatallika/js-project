@@ -1,0 +1,49 @@
+.wrap {
+ width: 800px;   
+}
+#big_picture {
+  width: 800px;
+    height: 533px;
+    background: #666;        
+}
+
+.image__big {
+    width: 800px;
+    
+}
+
+.gallery__small:not(:last-child) {
+    margin-right: 10px;
+    
+}
+.gallery__small{
+    margin: 5px;
+    border: 3px solid #FFF;     
+}
+.gallery__small:hover {
+    opacity: 0.6;
+}
+
+.gallery__small:active {
+    filter: blur(2px);
+}
+
+
+#gallery {
+    display: flex;
+    justify-content: center;
+    background: lightgrey;
+}
+
+.gallery__arrow {
+    padding: 45px 5px;
+}
+
+.gallery__arrow:hover {
+    opacity: 0.6;
+}
+
+.gallery__arrow:active {
+    filter: blur(2px)
+}
+
