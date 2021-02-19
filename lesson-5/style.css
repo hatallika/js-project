@@ -1,0 +1,23 @@
+.chess {
+    width: 70px;
+    height: 70px; 
+    font-size: 50px;
+    text-align: center;
+}
+.chess__white {   
+    background: #fff;
+    border: 1px solid #000;
+}
+
+.chess__black {    
+    background: #d3d3d3;
+    border: 1px solid #000;
+}
+
+.chess__rotate {
+    transform: rotate(180deg);
+    font-size: 20px;
+}
+.chess__numbers {
+    font-size: 20px;
+}

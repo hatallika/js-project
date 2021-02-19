@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chess board</title>
+</head>
+<body>
+    <div id = "chess"></div>
+    <script>
+        var masLetters = ["A","B","C","D","E","F","G","H"];
+        var masFiguresWhite = ["&#9814;", "&#x2658", "&#x2657", "&#x2655","&#x2654", "&#x2657", "&#x2658", "&#9814;"];// белые фигуры
+        var masFiguresBlack = ["&#x265C;", "&#x265E", "&#x265D", "&#x265B","&#x265A", "&#x265D", "&#x265E;", "&#x265C;"];
+        
+        var pawnWhite = "&#x2659";// - пешка белая
+        var pawnBlack = "&#x265F";
+        var tr, td , i, j;
+        function boardColor(n,m) { // закрашиваем через одну проверяя четность суммы строки и столбца
+
+            if((n+m)%2 == 0) {
+                td.classList.add("chess__white");
+            } else {
+                td.classList.add("chess__black");
+            }
+        }
+     
+    var table = document.createElement("table"); 
+        for (i = 0; i < 10; i++){
+            tr = document.createElement("tr");
+            table.append(tr);
+            for (j = 0; j<10; j++){
+                td = document.createElement("td");
+                td.classList.add("chess");
+                td.align = "center";
+                if (i > 0 && i < 9 && j > 0 && j < 9) {
+                    boardColor(i,j);                    
+                }               
+                
+                tr.append(td); //добавляем ячейки в строках
+                
+                if(j > 0 && j < 9){                                        
+                       switch(i){ //заполняем строки с буквами и фигурами
+                        case 0: 
+                                td.innerText = masLetters[j-1];
+                                td.classList.add("chess__rotate"); //перевернутые буквы                             
+                            break;
+                        case 1: 
+                                td.innerHTML = masFiguresWhite[j-1]; // белые фигуры                             
+                               break;
+                        case 2: 
+                                td.innerHTML = pawnWhite;   //белые пешки                             
+                               break;
+                        case 7: 
+                                td.innerHTML = pawnBlack;   //черные пешки                             
+                               break;       
+                               
+                        case 8: 
+                               td.innerHTML = masFiguresBlack[j-1]; // черные фигуры
+                               break;
+                        case 9: //заполняем буквами последнюю строку                            
+                                td.innerText = masLetters[j-1]; // буквы
+                               td.style.fontSize = "20px";
+                            break;
+                        }                     
+                }    
+                
+            }
+            if (i > 0 && i < 9) { // пишем цифры на доске
+            var list = tr.querySelectorAll("td");  //получаем массив из td строки  
+            list[0].innerText = 9 - i; // первая ячейка заполняется цифрой
+            list[0].classList.add("chess__numbers");    
+            list[9].innerText = 9 - i; // вторая ячейка заполняется цифрой
+            list[9].classList.add("chess__rotate");            
+            }
+                
+        }
+         
+        document.getElementById("chess").append(table);
+    </script>
+</body>
+</html>

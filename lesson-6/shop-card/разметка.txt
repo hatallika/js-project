@@ -1,0 +1,27 @@
+     <secton id="shop">
+         <div id="product"></div>
+<!-- разметка
+        <ul class="products">
+            <li class="products__item" id="product_1">
+               <p class="products__title">Название 1</p>
+               <img src="..." alt="" class="product__img">
+               <p class="product__price">245</p>
+               <button class="product__add">Добавить в корзину</button>
+                
+            </li>
+            
+        </ul>
+-->
+    <div id="card">
+<!--
+        <ul class="card__items">
+            <li class="card__list">
+                <p class="card__title">Название 1</p>
+                <p class="card__price">345</p>
+            </li>
+        </ul>
+-->
+<!--        <div id="total"></div>-->
+    </div>
+    
+     </secton>
